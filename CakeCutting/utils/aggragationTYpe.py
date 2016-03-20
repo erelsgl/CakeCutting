@@ -4,4 +4,4 @@ __author__ = 'gabib3b'
 
 class AggregationType(Enum):
     Noise = 1,
-    NUmberOfAgents = 2
+    NumberOfAgents = 2

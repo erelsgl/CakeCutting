@@ -25,11 +25,7 @@ from datetime import datetime
 
 
 
-NOISE_PROPORTION = [0.2, 0.4, 0.6,0.8]
-NUMBER_OF_AGENTS = [2,4,8,16,32,64,128,256,512]
-#NUMBER_OF_AGENTS = [16, 32, 64,128,256,512]
 DATA_FILE_NAME ='data/newzealand_forests_npv_4q.1d.json'
-EXPERIMENTS_PER_CELL = 1
 
 
 
@@ -84,7 +80,7 @@ def run_ex_for_params(num_of_agents, noise, values):
 
            allocations_even_paz_fraud  = numbersUtils.values_to_allocations(noise_values)
 
-           calc_results_with_exchnages(evenpazalg.even_paz_dividion, expType.ExperimentType.even_paz_fraud_agenct_index,
+           calc_results_with_exchnages(evenpazalg.even_paz_dividion, expType.ExperimentType.even_paz_fraud_agent_index,
                                         expType.ExperimentType.even_paz_fraud_agent_index_with_exchange, allocations_even_paz_fraud, num_of_agents, noise, i,
                                         identical_allocation_last_diminisher_i, expType.ExperimentType.even_paz_fraud_identical, results_by_exp_type)
 
@@ -109,7 +105,7 @@ def run_ex_for_params(num_of_agents, noise, values):
 
 def run_2(num_of_agents, noise, values):
 
-     print('start calculating agencts-{0} , noise-{1},  {2}'.format(num_of_agents, noise, datetime.utcnow()))
+     print('start calculating agents-{0} , noise-{1},  {2}'.format(num_of_agents, noise, datetime.utcnow()))
 
      identical_values = numbersUtils.values_to_allocations(numbersUtils.noisy_values_array(values, 0, None, num_of_agents))
 
@@ -194,7 +190,7 @@ def calc_results_with_exchnages(first_alg_method, first_exp_type, second_exp_typ
      division = first_alg_method(values, fraud_agent_index)
      additional1 = {}
      if fraud_agent_index is not None:
-        additional1[utils.additionalFields.fraud_agenct_index()] = fraud_agent_index
+        additional1[utils.additionalFields.fraud_agent_index()] = fraud_agent_index
 
 
 
@@ -211,7 +207,7 @@ def calc_results_with_exchnages(first_alg_method, first_exp_type, second_exp_typ
      additional[utils.additionalFields.numberOfExchanges()] = num_of_changes
 
      if fraud_agent_index is not None:
-        additional[utils.additionalFields.fraud_agenct_index()] = fraud_agent_index
+        additional[utils.additionalFields.fraud_agent_index()] = fraud_agent_index
 
      #res[second_exp_type] = ExpKey.ExpKey(second_exp_type, num_of_agents, noise, division, additional)
      results_by_exp_type[second_exp_type].append(ExpKey.ExpKey(second_exp_type, num_of_agents, noise, division, additional))
@@ -232,12 +228,12 @@ def calculate_results(aggregationType):
 
     values = mean_values()
 
-    dirPath = 'results/{0}'.format(datetime.utcnow().strftime("%Y_%m_%d_%M_%S"))
+    dirPath = 'results/{0}'.format(datetime.utcnow().strftime("%Y_%m_%d_%H_%M_%S"))
 
     if not os.path.exists(dirPath):
         os.makedirs(dirPath)
 
-    if aggregationType == AggregationType.NUmberOfAgents:
+    if aggregationType == AggregationType.NumberOfAgents:
 
         for agent_number in NUMBER_OF_AGENTS:
             print(agent_number)
@@ -287,8 +283,15 @@ def calculate_results(aggregationType):
 
 
 if __name__ == '__main__':
-    calculate_results(AggregationType.NUmberOfAgents)
+    EXPERIMENTS_PER_CELL = 10
+
+    NOISE_PROPORTION = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8]
+    NUMBER_OF_AGENTS = [8,128]
+    calculate_results(AggregationType.NumberOfAgents)
+    
+    NOISE_PROPORTION = [0.2,0.8]
+    NUMBER_OF_AGENTS = [2,4,8,16,32,64,128]
+    calculate_results(AggregationType.Noise)
+    
     print('completed..')
-
-
 
