@@ -4,21 +4,25 @@ Requirements:
 
 1. Python 3.4
 
-2. You may need to install some Python packages that I am using (you can use PIP to install them).
+2. You may need to install some Python packages using PIP.
 
 
-the project has two parts
+the project has two part.
 
-1. python program: runs the algorithms and writes the results to files under the "results" folder.
+## Python program
+The python program runs the algorithms and writes the results to files under the "results" folder. You can configure the program in file main.py:
+  * NOISE_PROPORTION
+  * NUMBER_OF_AGENTS
+  * EXPERIMENTS_PER_CELL
+  * AggregationType
 
-You can configure the program in file main.py:
+Run it in the following way:
 
-* NOISE_PROPORTION
-* NUMBER_OF_AGENTS
-* EXPERIMENTS_PER_CELL
-* AggregationType
-
-    cd  CakeCuttingFull/CakeCutting/
+    cd  <repository>/CakeCutting/
     python3 main.py
 
-2. Web part that you can select result file and you will see graphs of the results.
+The output is in folder CakeCutting/results.
+
+## Web app
+The web part allows you to select a result file and see graphs of the results.
+
