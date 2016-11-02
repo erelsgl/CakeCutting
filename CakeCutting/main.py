@@ -9,15 +9,15 @@ __author__ = 'gabib3b'
 
 import json
 from evenpaz.allocation import Allocation
-import utils.numbersUtil as numbersUtils
 import evenpaz.evenpaz1d as evenpazalg
+import utils
+import utils.numbersUtil as numbersUtils
 import lastdiminisher.lastdiminisher1d as LastDiminisher
 import utils.strategy as strategyUtil
 import utils.envInfluence as envEffect
 import utils.expKey as ExpKey
 import utils.additionalFields
-import utils.experimentType as expType
-import utils
+import utils.experimentType as expType   # an enum type with the constants: even_paz,  last_diminisher, etc.
 import utils.envInfluence as envinfluence
 import utils.cakepartitions as cakepartitionsUtil
 from datetime import datetime
@@ -236,9 +236,9 @@ def calculate_results(aggregationType):
     if aggregationType == AggregationType.NumberOfAgents:
 
         for agent_number in NUMBER_OF_AGENTS:
-            print(agent_number)
+            print("\n"+str(agent_number)+" agents")
             evenPazResultsFileName =  "{0}/evenpaz-agents-{1}.dat".format(dirPath, agent_number)
-            ldResultsFileName =  "{0}//ld-agents-{1}.dat".format(dirPath, agent_number)
+            ldResultsFileName =  "{0}/ld-agents-{1}.dat".format(dirPath, agent_number)
             print('even paz result file {0}'.format(evenPazResultsFileName))
             print('last diminisher result file {0}'.format(ldResultsFileName))
 
@@ -260,6 +260,7 @@ def calculate_results(aggregationType):
     elif aggregationType == AggregationType.Noise:
 
          for noise in NOISE_PROPORTION:
+            print("\n"+str(noise)+" noise")
             evenPazResultsFileName =  "{0}/evenpaz-noise-{1}.dat".format(dirPath, noise)
             ldResultsFileName =  "{0}/ld-noise-{1}.dat".format(dirPath, noise)
             evenPazWriter = open(evenPazResultsFileName,'w')
@@ -283,15 +284,16 @@ def calculate_results(aggregationType):
 
 
 if __name__ == '__main__':
+    print (os.path.realpath(__file__))
+
     EXPERIMENTS_PER_CELL = 10
 
     NOISE_PROPORTION = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8]
-    NUMBER_OF_AGENTS = [8,128]
+    NUMBER_OF_AGENTS = [32]
     calculate_results(AggregationType.NumberOfAgents)
-    
-    NOISE_PROPORTION = [0.2,0.8]
-    NUMBER_OF_AGENTS = [2,4,8,16,32,64,128]
-    calculate_results(AggregationType.Noise)
-    
-    print('completed..')
 
+#    NOISE_PROPORTION = [0.2,0.8]
+#    NUMBER_OF_AGENTS = [2,4,8,16,32,64,128]
+#    calculate_results(AggregationType.Noise)
+
+    print('completed..')

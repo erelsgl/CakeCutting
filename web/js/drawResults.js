@@ -1,7 +1,7 @@
 
 
 function drawgraph22(data, xlabel, yLabel) {
-  
+
     xValues = []
     yValues = []
 
@@ -16,7 +16,7 @@ function drawgraph22(data, xlabel, yLabel) {
         },
         yaxis: {
             title: yLabel,
-            type: 'log'
+            //type: 'log'
         },
         margin: {
             t: 20
@@ -37,7 +37,7 @@ function drawgraph22(data, xlabel, yLabel) {
 
 
 function drawgraph(data, xlabel, yLabel) {
-    
+
     var graphDivId = createGrapgDiv();
     xValues = []
     yValues = []
@@ -53,7 +53,7 @@ function drawgraph(data, xlabel, yLabel) {
         },
         yaxis: {
             title: yLabel,
-            type: 'log'
+            //type: 'log'
         },
         margin: {
             t: 20

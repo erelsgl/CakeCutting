@@ -1,5 +1,3 @@
-
-
 __author__ = 'gabib3b'
 import random as rnd
 import math
@@ -260,28 +258,3 @@ def set_allocations_grade(allocations):
 
 def set_allocation_grade(allocation):
     allocation.grade = calcOperations.sum_values(allocation.values, allocation.fromIndex, allocation.toIndex)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

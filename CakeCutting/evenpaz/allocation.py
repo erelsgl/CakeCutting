@@ -2,9 +2,6 @@ __author__ = 'gabib3b'
 import utils.calcOperations
 
 class Allocation(object):
-
-
-
     def __init__(self, from_index, to_index, values):
 
         if from_index is None:
