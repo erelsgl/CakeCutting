@@ -3,7 +3,6 @@ import utils.calcOperations
 
 class Allocation(object):
     def __init__(self, from_index, to_index, values):
-
         if from_index is None:
             self.fromIndex = 0
         else:
@@ -22,9 +21,7 @@ class Allocation(object):
         self.halfCutValues = {}
 
 
-
     def value(self):
-
         values = self.values
 
     def relative_value(self):
@@ -36,7 +33,6 @@ class Allocation(object):
             self.relative_values[relative_value_index] = allocation_sum / total_sum
 
         return self.relative_values[relative_value_index]
-
 
 
     def values_sum(self, from_index, to_index):

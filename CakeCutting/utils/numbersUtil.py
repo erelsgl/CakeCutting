@@ -19,7 +19,6 @@ def __allocate_from_number(values):
     return Allocation(None, None, values)
 
 def noisy_values(mean_values, noise_proportion, normalized_sum):
-
     aggregated_sum = 0
     values = [0] * len(mean_values)
     for i in range(len(mean_values)):
@@ -28,12 +27,10 @@ def noisy_values(mean_values, noise_proportion, normalized_sum):
         newVal = max(0, newVal)
         aggregated_sum += newVal
         values[i] = newVal
-
     if aggregated_sum > 0 and normalized_sum is not None and normalized_sum > 0:
         normalization_factor = normalized_sum / aggregated_sum
         for i in range(len(values)):
             values[i] *= normalization_factor
-
     return values
 
 def preference_values(mean_values, index_to_location_type, normalized_sum):
