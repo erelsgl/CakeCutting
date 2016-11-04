@@ -157,7 +157,3 @@ def calc_half_cut(allocation, proportional_value, fraud_agent_index, allocations
 
     else:
         return host_cut_index
-
-
-
-

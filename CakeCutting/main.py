@@ -1,6 +1,6 @@
 import os
 from utils.ExpMeasures import ExpMeasures
-from utils.aggragationTYpe import AggregationType
+from utils.aggregationType import AggregationType
 from utils.algresult import AlgResult
 from copy import deepcopy
 
@@ -216,11 +216,8 @@ def calc_results_with_exchnages(first_alg_method, first_exp_type, second_exp_typ
 
 
 def mean_values():
-
-
     with open(DATA_FILE_NAME) as json_file:
        origin_values = json.load(json_file)
-
     return origin_values
 
 
@@ -296,4 +293,4 @@ if __name__ == '__main__':
 #    NUMBER_OF_AGENTS = [2,4,8,16,32,64,128]
 #    calculate_results(AggregationType.Noise)
 
-    print('completed..')
+    print('completed.')
